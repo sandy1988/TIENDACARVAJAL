@@ -1,0 +1,48 @@
+﻿@model SandyStore.Models.Productos
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container" style="margin-top:5%">
+        <div class="card">
+            <div class="card-header bg-info text-center">
+                <h2>Eliminar Producto</h2>
+            </div>
+            <div class="card-body text-center">
+                <div style="border: white 1px groove;">
+                        <p class="alert-info m-0-form">Imagen actual del producto</p>
+                        <img src="~/ImagenesProductos/@Model.ProNombre/@Model.ProRutaImagen" class="w-25" />
+                        @*<a class='btn btn-danger btn-xs' href="@Url.Action("DeleteImagen", "TipoDocumento", new { id = Model.tdoc_id, CodigoPlantilla = ViewBag.CodigoPlantilla, NombreImagen = imgSrc })"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>*@
+                    </div>
+                    <dl class="dl-horizontal">
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProNombre)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ProDescripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProValor)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ProValor)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a class='btn btn-danger btn-sm' href="@Url.Action("Index")">
+                        Regresar
+                    </a>
+                    <button class="btn btn-info btn-sm" type="submit">Eliminar</button>
+                </div>
+            </div>
+    </div>
+        }
+        

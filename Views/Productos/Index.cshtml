@@ -1,0 +1,103 @@
+﻿@model IEnumerable<SandyStore.Models.Productos>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "paging": true,
+            "pageLength": 5,
+            "records": 5,
+            "recordsFiltered": 10,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                }
+            }
+        });
+    });
+</script>
+<div class="container" style="margin-top:5%">
+    <div class="card">
+        <div class="card-header bg-info text-center">
+            <h3>Productos</h3>
+        </div>
+        <div class="card-body">
+            <a class='btn btn-success' href="@Url.Action("Create")">Crear nuevo producto</a>
+            <div class="table-responsive">
+                <table class="table" id="table_id table-responsive-md" >
+                    <thead class="" style="background-color:blanchedalmond; color:black">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DepDescripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProNombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProDescripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProValor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProRutaImagen)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepDescripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProNombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProDescripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProValor)
+                            </td>
+                            <td width="20px">
+                                <span><img src="~/ImagenesProductos/@item.ProNombre/@item.ProRutaImagen" class="w-100" /></span>
+                                
+                            </td>
+                            <td>
+                                <div class="btn-group-sm">
+                                    <a class='btn btn-info' href="@Url.Action("Edit", new { id = item.ProID })">Editar</a>
+                                    <a class='btn btn-danger' href="@Url.Action("Delete", new { id = item.ProID })">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                       

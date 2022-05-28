@@ -1,0 +1,71 @@
+﻿@model SandyStore.Models.RegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <section class="intro">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xl-10">
+                        <div class="card">
+                            <div class="card-body p-5">
+
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-6 col-xl-7">
+
+                                        <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px;">
+                                            <img src="~/Content/Imagenes/Registro.png" class="img-fluid rounded-start" alt="...">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 col-xl-4 text-center">
+
+                                        <h2 class="fw-bold mb-4 pb-2">Registrarse</h2>
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-outline mb-3">
+                                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg", @id = "Email" })
+                                            <label class="form-label" for="Email">Email</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg", @id = "Password" })
+                                            <label class="form-label" for="Password">Password</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-lg", @id = "ConfirmPassword" })
+                                            <label class="form-label" for="ConfirmPassword">Password</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button class="btn btn-info btn-block btn-lg" type="submit">Registrarse</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
